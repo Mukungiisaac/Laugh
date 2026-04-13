@@ -56,6 +56,59 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.location.href = `mailto:frankmutuku758@gmail.com?subject=${subject}&body=${body}`;
             });
         });
+
+        // CV Download tracking and feedback
+        const cvDownloadLinks = document.querySelectorAll('.mpc-btn-cv');
+        cvDownloadLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Add visual feedback
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Downloading...';
+                this.style.pointerEvents = 'none';
+                
+                // Reset button after 2 seconds
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.pointerEvents = 'auto';
+                    
+                    // Show success message
+                    showDownloadMessage();
+                }, 2000);
+                
+                // Track download (you can add analytics here)
+                console.log('CV Download initiated');
+            });
+        });
+    }
+
+    // Show download success message
+    function showDownloadMessage() {
+        // Create temporary message
+        const message = document.createElement('div');
+        message.textContent = 'CV download started! Thank you for your interest.';
+        message.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            z-index: 10000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: slideInRight 0.3s ease-out;
+        `;
+        
+        document.body.appendChild(message);
+        
+        // Remove message after 4 seconds
+        setTimeout(() => {
+            message.style.animation = 'slideOutRight 0.3s ease-out';
+            setTimeout(() => {
+                document.body.removeChild(message);
+            }, 300);
+        }, 4000);
     }
 
     // Setup social links
