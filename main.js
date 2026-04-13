@@ -33,6 +33,34 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update greeting every minute
     setInterval(updateGreeting, 60000);
 
+    // --- Enhanced Social Links ---
+    function setupSocialLinks() {
+        // WhatsApp links with pre-filled message
+        const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
+        whatsappLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const message = encodeURIComponent("Hello Francis! I'm interested in your services and would like to discuss a potential project.");
+                const phone = "254701239379";
+                window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+            });
+        });
+
+        // Email links with subject line
+        const emailLinks = document.querySelectorAll('a[href^="mailto:frankmutuku758@gmail.com"]:not(.mpc-email)');
+        emailLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const subject = encodeURIComponent("Inquiry about your services");
+                const body = encodeURIComponent("Hello Francis,\n\nI'm interested in learning more about your services. Please let me know how we can work together.\n\nBest regards");
+                window.location.href = `mailto:frankmutuku758@gmail.com?subject=${subject}&body=${body}`;
+            });
+        });
+    }
+
+    // Setup social links
+    setupSocialLinks();
+
     // --- Header Scroll Effect ---
     const header = document.getElementById('header');
     

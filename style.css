@@ -505,7 +505,7 @@ header nav {
 
 .scroll-indicator {
     position: absolute;
-    bottom: 50px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -522,6 +522,13 @@ header nav {
     width: 1px;
     height: 50px;
     background: linear-gradient(to bottom, var(--accent-secondary), transparent);
+}
+
+/* Hide scroll indicator on mobile to prevent overlap */
+@media (max-width: 992px) {
+    .scroll-indicator {
+        display: none;
+    }
 }
 
 /* --- Vibe Section --- */
@@ -1527,7 +1534,7 @@ footer {
     .mpc-inner {
         position: relative;
         z-index: 1;
-        padding: 0 1.5rem 2rem;
+        padding: 0 1.5rem 2.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1724,6 +1731,7 @@ footer {
     transition: var(--transition-smooth);
     text-align: left;
     margin-top: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 .mpc-btn-cv:hover {
