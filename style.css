@@ -230,33 +230,59 @@ header nav {
 
 .image-wrapper {
     position: relative;
-    border-radius: 40px 10px 40px 10px; /* Obinna style asymmetric */
+    border-radius: 40px 10px 40px 10px;
+    padding: 3px;
+    background: rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(65, 105, 225, 0.3);
+    box-shadow: 0 25px 50px -12px rgba(0, 255, 255, 0.3);
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, transparent, transparent, var(--accent-secondary));
+    animation: rotate-light 4s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate-light {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .image-wrapper::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    bottom: 3px;
+    left: 3px;
+    width: calc(100% - 6px);
     height: 50%;
     background: linear-gradient(to top, var(--bg-black), transparent);
     pointer-events: none;
+    border-radius: 0 0 37px 7px;
+    z-index: 3;
 }
 
 .image-wrapper img {
     width: 100%;
     height: 600px;
     object-fit: cover;
+    border-radius: 37px 7px 37px 7px;
     filter: brightness(0.9) contrast(1.1);
     transition: var(--transition-smooth);
+    z-index: 2;
+    position: relative;
 }
 
 .image-wrapper:hover img {
     filter: grayscale(0%);
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .floating-badge {
@@ -771,4 +797,253 @@ footer {
     .btn-secondary { margin-left: 0; }
     .tech-grid { grid-template-columns: 1fr; }
     .testimonials-grid { grid-template-columns: 1fr; }
+}
+
+/* --- Mobile Profile Card --- */
+.mobile-profile-card {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .desktop-hero {
+        /* If we want to hide it entirely */
+    }
+    .hero-grid {
+        display: none !important;
+    }
+    
+    .hero-section {
+        padding-top: 100px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-profile-card {
+        display: block;
+        width: 100%;
+        max-width: 400px;
+        position: relative;
+        padding: 3px;
+        border-radius: 26px;
+        overflow: hidden;
+        margin: 0 auto;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-profile-card::before {
+        content: '';
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        top: -50%;
+        left: -50%;
+        background: conic-gradient(transparent 70%, var(--accent-secondary) 100%);
+        animation: rotate-light-fallback 4s linear infinite;
+        z-index: -2;
+    }
+    
+    @keyframes rotate-light-fallback {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
+    .mobile-profile-card::after {
+        content: '';
+        position: absolute;
+        top: 3px; left: 3px; right: 3px; bottom: 3px;
+        background: #111318; /* Dark grey */
+        border-radius: 24px;
+        z-index: -1;
+    }
+
+    .mpc-top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem 1rem 1rem;
+        z-index: 1;
+        position: relative;
+    }
+
+    .mpc-greeting {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.05);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: white;
+    }
+
+    .mpc-inner {
+        position: relative;
+        z-index: 1;
+        padding: 0 1.5rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .mpc-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .mpc-logo {
+        background: rgba(0, 255, 136, 0.1);
+        color: #00ff88;
+        font-weight: 700;
+        padding: 0.3rem 0.6rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        border: 1px solid rgba(0, 255, 136, 0.2);
+    }
+
+    .mpc-status {
+        background: rgba(255,255,255,0.05);
+        color: #a0a0a0;
+        font-size: 0.75rem;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .pulse-dot {
+        width: 6px;
+        height: 6px;
+        background: #00ff88;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #00ff88;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(0, 255, 136, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+    }
+
+    .mpc-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 300px;
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .mpc-image-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .mpc-name-overlay {
+        position: absolute;
+        bottom: 10px;
+        left: 15px;
+        font-family: 'Satisfy', cursive;
+        font-size: 2.5rem;
+        color: white;
+        text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        margin: 0;
+    }
+}
+
+/* Global Profile Info Styles (Used in Hero & Mobile Card for classes, hero-profile-info only in Hero) */
+.hero-profile-info {
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+    width: calc(100% - 6px);
+    margin-top: 0;
+    padding: 3rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    background: linear-gradient(to top, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.8) 60%, transparent 100%);
+    border-radius: 0 0 37px 7px;
+    transform: translateY(100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+}
+
+.image-wrapper:hover .hero-profile-info {
+    transform: translateY(0);
+}
+
+/* Hide floating badges when revealing the info card */
+.image-wrapper:hover .floating-badge {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.mpc-info {
+    text-align: center;
+}
+
+.mpc-email {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.mpc-location {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.mpc-socials {
+    display: flex;
+    gap: 1rem;
+}
+
+.mpc-socials a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    color: #a0a0a0;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.mpc-socials a:hover {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+.mpc-btn-cv {
+    width: 100%;
+    max-width: 300px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 1rem 1.2rem;
+    border-radius: 12px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.mpc-btn-cv:hover {
+    background: rgba(255,255,255,0.08);
 }

@@ -66,23 +66,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- Form Submission Handling (Mock) ---
+    // --- Form Submission Handling ---
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
+        const btnEmail = document.getElementById('btn-email');
+        const btnWhatsapp = document.getElementById('btn-whatsapp');
+
+        const getFormData = () => {
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+            return { name, email, message };
+        };
+
+        const validateForm = () => {
+            if (!contactForm.checkValidity()) {
+                contactForm.reportValidity();
+                return false;
+            }
+            return true;
+        };
+
+        btnEmail.addEventListener('click', () => {
+            if (!validateForm()) return;
+            const { name, email, message } = getFormData();
+            const subject = encodeURIComponent(`New Inquiry from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+            
+            const mailtoLink = document.createElement('a');
+            mailtoLink.href = `mailto:frankmutuku758@gmail.com?subject=${subject}&body=${body}`;
+            // we remove target='_blank' so it doesn't open an empty tab
+            document.body.appendChild(mailtoLink);
+            mailtoLink.click();
+            document.body.removeChild(mailtoLink);
+        });
+
+        btnWhatsapp.addEventListener('click', () => {
+            if (!validateForm()) return;
+            const { name, email, message } = getFormData();
+            const text = encodeURIComponent(`Hello, my name is ${name} (${email}).\n\n${message}`);
+            const phone = "254701239379"; 
+            window.open(`https://wa.me/${phone}?text=${text}`, '_blank');
+        });
+
+        // Prevent default submit if enter is pressed
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const btn = contactForm.querySelector('button');
-            const originalText = btn.innerText;
-            
-            btn.innerText = 'Sending...';
-            btn.disabled = true;
-            
-            setTimeout(() => {
-                alert('Thank you! Your message has been sent to iTech Studio.');
-                contactForm.reset();
-                btn.innerText = originalText;
-                btn.disabled = false;
-            }, 1500);
         });
     }
 });
