@@ -18,22 +18,38 @@
         <nav class="container">
             <div class="logo"><img src="logo.jpeg" alt="WD PRIMS & DESIGNS logo"
                     style="height: 50px; border-radius: 5px;"></div>
-            <!-- Top nav links removed in favor of side-nav -->
+            <!-- Mobile hamburger menu -->
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </nav>
     </header>
 
     <!-- Floating Side Navigation -->
-    <nav class="side-nav">
+    <nav class="side-nav" id="side-nav">
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-logo">
+                <img src="logo.jpeg" alt="WD PRIMS & DESIGNS" style="height: 40px; border-radius: 5px;">
+            </div>
+            <button class="mobile-nav-close" id="mobile-nav-close">
+                <i class="fa-solid fa-times"></i>
+            </button>
+        </div>
         <ul>
-            <li><a href="#hero" class="active" title="Home"><i class="fa-solid fa-house"></i></a></li>
-            <li><a href="#services" title="Services"><i class="fa-solid fa-desktop"></i></a></li>
-            <li><a href="#tech-stack" title="Stack"><i class="fa-solid fa-layer-group"></i></a></li>
-            <li><a href="#portfolio" title="Portfolio"><i class="fa-solid fa-briefcase"></i></a></li>
-            <li><a href="#about" title="About"><i class="fa-solid fa-user"></i></a></li>
-            <li><a href="#testimonials" title="Feedback"><i class="fa-solid fa-comment-dots"></i></a></li>
-            <li><a href="#contact" title="Contact"><i class="fa-solid fa-envelope"></i></a></li>
+            <li><a href="#hero" class="active" title="Home"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+            <li><a href="#services" title="Services"><i class="fa-solid fa-desktop"></i><span>Services</span></a></li>
+            <li><a href="#tech-stack" title="Stack"><i class="fa-solid fa-layer-group"></i><span>Tech Stack</span></a></li>
+            <li><a href="#portfolio" title="Portfolio"><i class="fa-solid fa-briefcase"></i><span>Portfolio</span></a></li>
+            <li><a href="#about" title="About"><i class="fa-solid fa-user"></i><span>About</span></a></li>
+            <li><a href="#testimonials" title="Feedback"><i class="fa-solid fa-comment-dots"></i><span>Testimonials</span></a></li>
+            <li><a href="#contact" title="Contact"><i class="fa-solid fa-envelope"></i><span>Contact</span></a></li>
         </ul>
     </nav>
+
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 
 
     <main>
@@ -352,8 +368,14 @@
                     <h2 class="section-title">Let's Connect</h2>
                     <p>Ready to start your next strategic project? Get in touch with WD PRIMS & DESIGNS today.</p>
                     <div class="contact-details">
-                        <a href="mailto:frankmutuku758@gmail.com">frankmutuku758@gmail.com</a>
-                        <a href="tel:+254701239379">+254 701 239 379</a>
+                        <a href="mailto:frankmutuku758@gmail.com">
+                            <i class="fa-solid fa-envelope"></i>
+                            frankmutuku758@gmail.com
+                        </a>
+                        <a href="tel:+254701239379">
+                            <i class="fa-solid fa-phone"></i>
+                            +254 701 239 379
+                        </a>
                     </div>
                 </div>
                 <form id="contact-form" class="reveal-right">
