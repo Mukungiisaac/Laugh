@@ -1,12 +1,14 @@
 :root {
     --bg-black: #050505;
     --bg-card: #0a0a0a;
+    --bg-alt: #080808;
     --accent-primary: #4169E1; /* Royal Blue */
     --accent-secondary: #E8401C; /* WD Logo Red-Orange */
     --accent-mixed: #8A2BE2; /* Blend intermediate to avoid muddy colors */
     --text-white: #FFFFFF;
     --text-gray: #A0A0A0;
     --glass-bg: rgba(10, 10, 10, 0.85);
+    --logo-bg: #ffffff;
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -14,6 +16,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body.light-mode {
+    --bg-black: #ffffff;
+    --bg-card: #f9fbfd;
+    --bg-alt: #f0f4f8;
+    --text-white: #111111;
+    --text-gray: #555555;
+    --glass-bg: rgba(255, 255, 255, 0.95);
+    --logo-bg: #f0f4f8;
 }
 
 html {
@@ -77,6 +89,42 @@ header nav {
     align-items: center;
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: var(--text-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .theme-toggle {
+    background: #eef5ff;
+    border-color: #b3d4ff;
+    color: #0055cc;
+}
+
+body.light-mode .theme-toggle:hover {
+    background: #d9e8ff;
+}
+
 .logo {
     font-size: 2.2rem;
     font-weight: 800;
@@ -89,6 +137,23 @@ header nav {
     font-size: 2.5rem;
     font-weight: 400;
     margin-left: -5px;
+}
+
+.logo-img {
+    height: 45px;
+    width: 140px;
+    object-fit: contain;
+    object-position: center;
+    background: var(--logo-bg);
+    border-radius: 6px;
+    padding: 5px 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: var(--transition-smooth);
+}
+
+.mobile-nav-logo .logo-img {
+    height: 32px;
+    width: 110px;
 }
 
 /* Mobile hamburger menu */
@@ -549,7 +614,7 @@ header nav {
 /* --- Vibe Section --- */
 .vibe-section {
     padding: 100px 0;
-    background: #080808;
+    background: var(--bg-alt);
 }
 
 .section-header {
@@ -634,7 +699,7 @@ header nav {
 /* --- Insights Section --- */
 .insights-section {
     padding: 100px 0;
-    background: #080808;
+    background: var(--bg-alt);
 }
 
 .insight-row {
@@ -793,6 +858,11 @@ header nav {
     overflow: hidden;
 }
 
+body.light-mode .tech-card {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.05);
+}
+
 .tech-card:hover {
     transform: translateY(-10px);
     border-color: var(--accent-secondary);
@@ -948,7 +1018,7 @@ header nav {
 /* --- Testimonials Section --- */
 .testimonials-section {
     padding: 100px 0;
-    background: #080808;
+    background: var(--bg-alt);
 }
 
 .testimonials-grid {
@@ -1018,7 +1088,7 @@ header nav {
 /* --- Contact Section --- */
 .contact-section {
     padding: 100px 0;
-    background: #080808;
+    background: var(--bg-alt);
 }
 
 .contact-grid {
@@ -1083,7 +1153,7 @@ input, textarea {
     width: 100%;
     padding: 1.2rem;
     background: transparent;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--accent-secondary);
     color: var(--text-white);
     border-radius: 10px;
     font-family: inherit;
@@ -1914,6 +1984,11 @@ footer {
     margin-bottom: 2rem;
     text-decoration: none;
     cursor: pointer;
+}
+
+body.light-mode .mpc-btn-cv {
+    border: 1px solid var(--accent-secondary);
+    background: rgba(0, 0, 0, 0.03);
 }
 
 .mpc-btn-cv:hover {

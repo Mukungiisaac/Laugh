@@ -33,6 +33,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update greeting every minute
     setInterval(updateGreeting, 60000);
 
+    // --- Theme Toggle (Light/Dark Mode) ---
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Setup initial theme based on localStorage
+        const savedTheme = localStorage.getItem('site-theme');
+        if (savedTheme === 'light') {
+            document.body.classList.add('light-mode');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            
+            if (isLight) {
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('site-theme', 'light');
+            } else {
+                themeIcon.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('site-theme', 'dark');
+            }
+        });
+    }
+
     // --- Enhanced Social Links ---
     function setupSocialLinks() {
         // WhatsApp links with pre-filled message
