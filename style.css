@@ -116,9 +116,9 @@ header nav {
 }
 
 body.light-mode .theme-toggle {
-    background: #eef5ff;
-    border-color: #b3d4ff;
-    color: #0055cc;
+    background: #fff0ed;
+    border-color: #ffccc4;
+    color: var(--accent-secondary);
 }
 
 body.light-mode .theme-toggle:hover {
@@ -1837,7 +1837,7 @@ footer {
         left: 20px;
         font-family: 'Satisfy', cursive;
         font-size: 2.6rem;
-        color: var(--text-white);
+        color: #ffffff;
         text-shadow: 2px 2px 15px rgba(0,0,0,0.8);
         margin: 0;
         font-weight: 400;
