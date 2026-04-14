@@ -1,11 +1,11 @@
 :root {
     --bg-black: #050505;
-    --bg-card: #0a0e1a;
+    --bg-card: #0a0a0a;
     --accent-primary: #4169E1; /* Royal Blue */
-    --accent-secondary: #00FFFF; /* Cyan */
+    --accent-secondary: #E8401C; /* WD Logo Red-Orange */
     --text-white: #FFFFFF;
     --text-gray: #A0A0A0;
-    --glass-bg: rgba(10, 14, 26, 0.8);
+    --glass-bg: rgba(10, 10, 10, 0.85);
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -167,7 +167,7 @@ header nav {
 .side-nav a.active {
     color: var(--bg-black);
     background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-    box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 15px rgba(232, 64, 28, 0.4);
 }
 
 /* Tooltips for desktop */
@@ -434,7 +434,7 @@ header nav {
     padding: 3px;
     background: rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 25px 50px -12px rgba(232, 64, 28, 0.3);
     z-index: 1;
     display: flex;
     justify-content: center;
@@ -782,7 +782,7 @@ header nav {
 .tech-card:hover {
     transform: translateY(-10px);
     border-color: var(--accent-secondary);
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(232, 64, 28, 0.1);
 }
 
 .tech-card-header {
@@ -1082,8 +1082,8 @@ input, textarea {
 input:focus, textarea:focus {
     outline: none;
     border-color: var(--accent-secondary);
-    background: rgba(0, 255, 255, 0.02);
-    box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.1);
+    background: rgba(232, 64, 28, 0.02);
+    box-shadow: 0 0 0 2px rgba(232, 64, 28, 0.1);
 }
 
 input::placeholder, textarea::placeholder {
