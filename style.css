@@ -3,6 +3,7 @@
     --bg-card: #0a0a0a;
     --accent-primary: #4169E1; /* Royal Blue */
     --accent-secondary: #E8401C; /* WD Logo Red-Orange */
+    --accent-mixed: #8A2BE2; /* Blend intermediate to avoid muddy colors */
     --text-white: #FFFFFF;
     --text-gray: #A0A0A0;
     --glass-bg: rgba(10, 10, 10, 0.85);
@@ -161,13 +162,24 @@ header nav {
 
 .side-nav a span {
     display: none;
+    color: var(--text-white);
+}
+
+.side-nav a i {
+    color: var(--accent-secondary);
+    transition: var(--transition-smooth);
 }
 
 .side-nav a:hover, 
 .side-nav a.active {
     color: var(--bg-black);
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-mixed), var(--accent-secondary));
     box-shadow: 0 0 15px rgba(232, 64, 28, 0.4);
+}
+
+.side-nav a:hover i, 
+.side-nav a.active i {
+    color: inherit;
 }
 
 /* Tooltips for desktop */
@@ -283,11 +295,13 @@ header nav {
     .side-nav a span {
         display: inline;
         font-weight: 500;
+        color: var(--text-white);
     }
     
     .side-nav a i {
         width: 20px;
         text-align: center;
+        color: var(--accent-secondary);
     }
     
     .side-nav a:hover,
@@ -666,7 +680,7 @@ header nav {
     position: absolute;
     bottom: 1.5rem;
     left: 1.5rem;
-    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-mixed), var(--accent-secondary));
     color: var(--bg-black);
     font-weight: 700;
     font-size: 0.85rem;
