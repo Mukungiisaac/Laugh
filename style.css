@@ -215,12 +215,13 @@ header nav {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 280px;
-        height: 100vh;
+        width: 200px;
+        height: auto;
+        max-height: 100vh;
         background: var(--bg-card);
         backdrop-filter: blur(20px);
         padding: 0;
-        border-radius: 0;
+        border-radius: 0 0 0 16px;
         border: none;
         box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
         transform: none;
@@ -236,7 +237,7 @@ header nav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1.5rem;
+        padding: 0.8rem 1rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     
@@ -260,7 +261,7 @@ header nav {
         flex-direction: column;
         gap: 0;
         align-items: stretch;
-        padding: 1rem 0;
+        padding: 0.5rem 0;
     }
     
     .side-nav li {
@@ -270,11 +271,11 @@ header nav {
     .side-nav a {
         width: 100%;
         height: auto;
-        padding: 1rem 1.5rem;
+        padding: 0.65rem 1rem;
         border-radius: 0;
         justify-content: flex-start;
-        gap: 1rem;
-        font-size: 1rem;
+        gap: 0.7rem;
+        font-size: 0.88rem;
         color: var(--text-white);
         transition: var(--transition-smooth);
     }
