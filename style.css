@@ -616,6 +616,147 @@ header nav {
 .asymmetric-bl { border-radius: 0 0 0 60px; }
 .asymmetric-br { border-radius: 0 0 60px 0; }
 
+/* --- Insights Section --- */
+.insights-section {
+    padding: 100px 0;
+    background: #080808;
+}
+
+.insight-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-bottom: 6rem;
+}
+
+.insight-row:last-child {
+    margin-bottom: 0;
+}
+
+.insight-row-reverse {
+    direction: rtl;
+}
+
+.insight-row-reverse > * {
+    direction: ltr;
+}
+
+.insight-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.insight-image img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+    display: block;
+}
+
+.insight-image:hover img {
+    transform: scale(1.05);
+}
+
+.insight-image-tag {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: var(--bg-black);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    letter-spacing: 1px;
+}
+
+.insight-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: var(--accent-secondary);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.insight-content h3 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+.insight-content p {
+    color: var(--text-gray);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+.insight-list {
+    list-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.insight-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-white);
+}
+
+.insight-list li i {
+    color: var(--accent-secondary);
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+@media (max-width: 992px) {
+    .insight-row,
+    .insight-row-reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+        gap: 2.5rem;
+        margin-bottom: 4rem;
+    }
+
+    .insight-row-reverse > * {
+        direction: ltr;
+    }
+
+    .insight-image img {
+        height: 300px;
+    }
+
+    .insight-content h3 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .insight-image img {
+        height: 240px;
+    }
+
+    .insight-content h3 {
+        font-size: 1.5rem;
+    }
+
+    .insight-content p {
+        font-size: 1rem;
+    }
+}
+
 /* --- Tech Stack Section --- */
 .tech-stack-section {
     padding: 100px 0;
